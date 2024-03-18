@@ -1,0 +1,48 @@
+{
+  "id": "UXP Firebase React TS Starter",
+  "name": "UXP Firebase React TS Starter",
+  "version": "1.0.0",
+  "main": "index.html",
+  "manifestVersion": 5,
+  "host": [
+    {
+      "app": "ID",
+      "minVersion": "19.1.0"
+    }
+  ],
+  "featureFlags": {
+    "enableSWCSupport": true
+  },
+  "requiredPermissions": {
+    "network": {
+      "domains": "all"
+    },
+    "localFileSystem": "fullAccess"
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "panel1",
+      "label": {
+        "default": "Home"
+      },
+      "minimumSize": {
+        "width": 230,
+        "height": 200
+      },
+      "maximumSize": {
+        "width": 460,
+        "height": 1080
+      },
+      "preferredDockedSize": {
+        "width": 400,
+        "height": 300
+      },
+      "preferredFloatingSize": {
+        "width": 300,
+        "height": 300
+      }
+    }
+  ],
+  "runOnStartup": true
+}
