@@ -4,5 +4,15 @@ declare module 'indesign' {
     [key: string]: any;
   }
 
+  export interface MutationEvent {
+    [key: string]: any;
+  }
+
+  export interface Event {
+    [key: string]: any;
+  }
+
   export const app: Application;
+  export const MutationEvent: MutationEvent;
+  export const Event: Event;
 }

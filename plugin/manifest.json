@@ -1,6 +1,6 @@
 {
-  "id": "UXP Firebase React TS Starter",
-  "name": "UXP Firebase React TS Starter",
+  "id": "RRM.Utils",
+  "name": "RRM Utilties",
   "version": "1.0.0",
   "main": "index.html",
   "manifestVersion": 5,
@@ -13,35 +13,48 @@
   "featureFlags": {
     "enableSWCSupport": true
   },
-  "requiredPermissions": {
-    "network": {
-      "domains": "all"
-    },
-    "localFileSystem": "fullAccess"
-  },
   "entrypoints": [
     {
       "type": "panel",
-      "id": "panel1",
+      "id": "RRM.VariablePanel",
       "label": {
-        "default": "Home"
+        "default": "Modify Variables"
       },
       "minimumSize": {
-        "width": 230,
+        "width": 300,
         "height": 200
       },
       "maximumSize": {
-        "width": 460,
-        "height": 1080
+        "width": 400,
+        "height": 1000
       },
       "preferredDockedSize": {
         "width": 400,
-        "height": 300
+        "height": 500
       },
       "preferredFloatingSize": {
-        "width": 300,
-        "height": 300
-      }
+        "width": 400,
+        "height": 500
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/RRM.png",
+          "scale": [1, 2, 1.5, 1.25],
+          "theme": ["darkest", "dark", "medium", "light", "lightest", "all"]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "width": 48,
+      "height": 48,
+      "path": "icons/RRMGray.png",
+      "scale": [1, 2],
+      "theme": ["darkest", "dark", "medium", "lightest", "light", "all"],
+      "species": ["pluginList"]
     }
   ],
   "runOnStartup": true
