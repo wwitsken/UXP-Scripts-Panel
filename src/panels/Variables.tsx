@@ -1,31 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Spectrum from 'react-uxp-spectrum';
-import { app } from 'indesign';
+import { CustomTextVariablePreference, app } from 'indesign';
 import Refresh from '../components/icons/refresh';
+import { Variable } from '../utils/getVariables';
 
 import './Variables.css';
+import useActiveDocumentVariables from '../hooks/useActiveDocumentVariables';
 
-export default function Variables() {
-  const getVariables = () => {
-    const customVariables: any = app.activeDocument.textVariables
-      .everyItem()
-      .properties.filter(
-        (variable: any) => variable.variableOptions?.constructorName === 'CustomTextVariablePreference'
-      );
-    const initialVariables = [];
-    customVariables.forEach((variable: any) => {
-      initialVariables.push({
-        name: variable.name,
-        contents: variable.variableOptions.properties.contents,
-      });
-    });
-    return initialVariables;
-  };
-  const [variables, setVariables] = useState([]);
+interface Props {
+  getVariables: () => Variable[];
+  listenerName?: string;
+}
 
-  useEffect(() => {
-    setVariables(getVariables());
-  }, []);
+export default function Variables({ getVariables, listenerName }: Props) {
+  const { variables, setVariables } = useActiveDocumentVariables(getVariables, listenerName);
+
+  // const getVariables = () => {
+  //   const customVariables = app.activeDocument.textVariables
+  //     .everyItem()
+  //     .properties.filter((variable) => variable.variableOptions?.constructorName === 'CustomTextVariablePreference');
+
+  //   const initialVariables: Variable[] = [];
+
+  //   customVariables.forEach((variable) => {
+  //     initialVariables.push({
+  //       name: variable.name,
+  //       contents: variable.variableOptions.properties.contents,
+  //     });
+  //   });
+  //   return initialVariables;
+  // };
+
+  const refresh = () => setVariables(getVariables());
+
+  // useEffect(() => {
+  //   const listener = app.addEventListener('afterContextChanged', () => {
+  //     setVariables(getVariables());
+  //   });
+
+  //   return () => listener.remove();
+  // });
 
   return (
     <div className="panel">
@@ -35,7 +49,7 @@ export default function Variables() {
             <Spectrum.Heading size="L">Update Variables</Spectrum.Heading>
           </div>
           <div style={{ marginTop: '15px', marginLeft: '15px' }}>
-            <Spectrum.ActionButton onClick={() => setVariables(getVariables())}>
+            <Spectrum.ActionButton onClick={refresh}>
               <Refresh />
             </Spectrum.ActionButton>
           </div>
@@ -50,8 +64,9 @@ export default function Variables() {
                   value={variable.contents}
                   onInput={(e) => {
                     const newVariable = { name: variable.name, contents: e.target.value };
-                    app.activeDocument.textVariables.itemByName(variable.name).variableOptions.contents =
-                      e.target.value;
+                    const variablepref = app.activeDocument.textVariables.itemByName(variable.name)
+                      .variableOptions as CustomTextVariablePreference;
+                    variablepref.contents = e.target.value;
                     setVariables([...variables.slice(0, i), newVariable, ...variables.slice(i + 1)]);
                   }}
                 >
