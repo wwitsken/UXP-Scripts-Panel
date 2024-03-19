@@ -32,7 +32,7 @@ export default function Variables() {
       <div className="scrollable-content">
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} className="element">
           <div className="element">
-            <Spectrum.Heading size="L">Modify Variables</Spectrum.Heading>
+            <Spectrum.Heading size="L">Update Variables</Spectrum.Heading>
           </div>
           <div style={{ marginTop: '15px', marginLeft: '15px' }}>
             <Spectrum.ActionButton onClick={() => setVariables(getVariables())}>
@@ -40,8 +40,8 @@ export default function Variables() {
             </Spectrum.ActionButton>
           </div>
         </div>
-        <div className="flex-col between">
-          <Spectrum.Divider size="medium" className="element" />
+        <Spectrum.Divider size="medium" className="element" />
+        <div className="main-content">
           {variables.map((variable, i) => {
             return (
               <div className="flex-item" key={variable.name}>
