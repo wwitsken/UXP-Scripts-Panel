@@ -4,6 +4,7 @@ import { entrypoints } from 'uxp';
 import { app } from 'indesign';
 import Variables from './panels/Variables';
 import { getVariables } from './utils/getVariables';
+import importStyles from './commands/importStyles';
 
 const listenerName: string = 'RRMUtils.TextVariableActiveDocumentListener';
 
@@ -46,5 +47,8 @@ entrypoints.setup({
         });
       },
     },
+  },
+  commands: {
+    'RRM.StylesImport': importStyles,
   },
 });

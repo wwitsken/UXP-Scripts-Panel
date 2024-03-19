@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+
 declare module 'indesign' {
   /**
    * An assignment.

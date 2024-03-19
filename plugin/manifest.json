@@ -13,6 +13,9 @@
   "featureFlags": {
     "enableSWCSupport": true
   },
+  "requiredPermissions": {
+    "localFileSystem": "fullAccess"
+  },
   "entrypoints": [
     {
       "type": "panel",
@@ -45,6 +48,13 @@
           "theme": ["darkest", "dark", "medium", "light", "lightest", "all"]
         }
       ]
+    },
+    {
+      "type": "command",
+      "id": "RRM.StylesImport",
+      "label": {
+        "default": "Import Styles"
+      }
     }
   ],
   "icons": [
@@ -56,6 +66,5 @@
       "theme": ["darkest", "dark", "medium", "lightest", "light", "all"],
       "species": ["pluginList"]
     }
-  ],
-  "runOnStartup": true
+  ]
 }

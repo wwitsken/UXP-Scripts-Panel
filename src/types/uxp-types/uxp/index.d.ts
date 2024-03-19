@@ -1,5 +1,4 @@
 declare module 'uxp' {
-
   /**
    * Event interface received when handling a 'uxpcommand' event.
    * @see https://developer.adobe.com/photoshop/uxp/2022/guides/how-to/#how-to-get-notified-that-your-panel-is-opening-or-closing
@@ -39,7 +38,6 @@ declare module 'uxp' {
    * @see https://developer.adobe.com/photoshop/uxp/2022/uxp/reference-js/Modules/uxp/Entry%20Points/
    */
   namespace entrypoints {
-
     /**
      * Represents a horizontal divider between two menu items.
      */
@@ -494,7 +492,6 @@ declare module 'uxp' {
    * @see https://developer.adobe.com/photoshop/uxp/2022/uxp/reference-js/Modules/uxp/Persistent%20File%20Storage/
    */
   namespace storage {
-
     type DomainSymbol = symbol & { _brand: { domainSymbol: undefined } };
 
     /**
@@ -605,86 +602,72 @@ declare module 'uxp' {
       /**
        * Attempted to invoke an abstract method.
        */
-      class AbstractMethodInvocationError extends Error {
-      }
+      class AbstractMethodInvocationError extends Error {}
 
       /**
        * Data and Format mismatch.
        */
-      class DataFileFormatMismatchError extends Error {
-      }
+      class DataFileFormatMismatchError extends Error {}
 
       /**
        * Domain is not supported by the current FileSystemProvider instance.
        */
-      class DomainNotSupportedError extends Error {
-      }
+      class DomainNotSupportedError extends Error {}
 
       /**
        * An attempt was made to overwrite an entry without indicating that it was safe to do so via overwrite: true.
        */
-      class EntryExistsError extends Error {
-      }
+      class EntryExistsError extends Error {}
 
       /**
        * The entry is not a file, but was expected to be.
        */
-      class EntryIsNotAFileError extends Error {
-      }
+      class EntryIsNotAFileError extends Error {}
 
       /**
        * The entry is not a folder, but was expected to be a folder.
        */
-      class EntryIsNotAFolderError extends Error {
-      }
+      class EntryIsNotAFolderError extends Error {}
 
       /**
        * The object passed as an entry is not actually an Entry.
        */
-      class EntryIsNotAnEntryError extends Error {
-      }
+      class EntryIsNotAnEntryError extends Error {}
 
       /**
        * An attempt was made to write to a file that was opened as read-only.
        */
-      class FileIsReadOnlyError extends Error {
-      }
+      class FileIsReadOnlyError extends Error {}
 
       /**
        * Unsupported format type.
        */
-      class InvalidFileFormatError extends Error {
-      }
+      class InvalidFileFormatError extends Error {}
 
       /**
        * The file name contains invalid characters.
        */
-      class InvalidFileNameError extends Error {
-      }
+      class InvalidFileNameError extends Error {}
 
       /**
        * The instance was expected to be a file system, but wasn't.
        */
-      class NotAFileSystemError extends Error {
-      }
+      class NotAFileSystemError extends Error {}
 
       /**
        * The file system is out of space (or quota has been exceeded).
        */
-      class OutOfSpaceError extends Error {
-      }
+      class OutOfSpaceError extends Error {}
 
       /**
        * The file system revoked permission to complete the requested action.
        */
-      class PermissionDeniedError extends Error {
-      }
+      class PermissionDeniedError extends Error {}
 
       /**
        * Attempted to execute a command that required the providers of all entries to match.
        */
-      class ProviderMismatchError extends Error {
-      }
+      class ProviderMismatchError extends Error {}
     }
 
     /**
@@ -748,7 +731,6 @@ declare module 'uxp' {
      * File and Folder share.
      */
     class Entry {
-
       /**
        * Creates an instance of Entry.
        * @param name
@@ -782,7 +764,7 @@ declare module 'uxp' {
            * If true, allows copying the folder.
            */
           allowFolderCopy?: boolean;
-        },
+        }
       ): Promise<File | Folder>;
 
       /**
@@ -801,7 +783,7 @@ declare module 'uxp' {
            * If specified, the entry is renamed to this name.
            */
           newName?: string;
-        },
+        }
       ): Promise<void>;
 
       /**
@@ -868,7 +850,6 @@ declare module 'uxp' {
      * You'll never instantiate a File directly; instead you'll get access via a storage.FileSystemProvider.
      */
     class File extends Entry {
-
       /**
        * Determines if the entry is a file or not.
        * This is safe to use even if the entry is null or undefined.
@@ -921,8 +902,8 @@ declare module 'uxp' {
           /**
            * If true, the data is written to the end of the file.
            */
-          append?: boolean
-        },
+          append?: boolean;
+        }
       ): Promise<number>;
     }
 
@@ -932,7 +913,6 @@ declare module 'uxp' {
      * FileSystemProvider.getFolder, or via Folder.getEntries.
      */
     class Folder extends Entry {
-
       static isFolder(entry: Entry): boolean;
 
       /**
@@ -968,7 +948,7 @@ declare module 'uxp' {
            * If true, the create attempt can overwrite an existing file.
            */
           overwrite?: boolean;
-        },
+        }
       ): Promise<File | Folder>;
 
       /**
@@ -986,7 +966,7 @@ declare module 'uxp' {
            * If true, the create attempt can overwrite an existing file.
            */
           overwrite?: boolean;
-        },
+        }
       ): Promise<File>;
 
       /**
@@ -1017,7 +997,7 @@ declare module 'uxp' {
            * If true, renaming can overwrite an existing entry.
            */
           overwrite?: boolean;
-        },
+        }
       ): void;
     }
 
@@ -1092,17 +1072,20 @@ declare module 'uxp' {
        * @param options
        * @return Returns the selected file, or null if no file were selected.
        */
-      getFileForSaving(suggestedName: string, options: {
-        /**
-         * The preferred initial location of the file picker.
-         * If not defined, the most recently used domain from a file picker is used instead.
-         */
-        initialDomain?: DomainSymbol;
-        /**
-         * Allowed file extensions, with no "." prefix.
-         */
-        types?: string[];
-      }): Promise<File>;
+      getFileForSaving(
+        suggestedName: string,
+        options: {
+          /**
+           * The preferred initial location of the file picker.
+           * If not defined, the most recently used domain from a file picker is used instead.
+           */
+          initialDomain?: DomainSymbol;
+          /**
+           * Allowed file extensions, with no "." prefix.
+           */
+          types?: string[];
+        }
+      ): Promise<File>;
 
       /**
        * Gets a folder from the file system via a folder picker dialog.
@@ -1118,7 +1101,7 @@ declare module 'uxp' {
          * The preferred initial location of the file picker.
          * If not defined, the most recently used domain from a file picker is used instead.
          */
-        initialDomain?: DomainSymbol
+        initialDomain?: DomainSymbol;
       }): Promise<Folder>;
 
       /**
@@ -1205,6 +1188,7 @@ declare module 'uxp' {
     }
 
     class LocalFileSystemProvider extends FileSystemProvider {
+      getEntryWithUrl(arg0: string): Promise<File | Folder>;
     }
 
     const localFileSystem: LocalFileSystemProvider;
@@ -1228,10 +1212,7 @@ declare module 'uxp' {
        * @param key A key to set value.
        * @param value A value for a key.
        */
-      function setItem(
-        key: string,
-        value: string | ArrayBuffer | Uint8Array,
-      ): Promise<void>;
+      function setItem(key: string, value: string | ArrayBuffer | Uint8Array): Promise<void>;
 
       /**
        * Retrieve a value associated with a provided key after the value is being decrypted from a secure storage.

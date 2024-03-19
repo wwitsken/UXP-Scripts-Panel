@@ -11,13 +11,13 @@ export default function useActiveDocumentVariables(
   const [variables, setVariables] = React.useState<Variable[]>(memoizedCallback());
 
   React.useEffect(() => {
-    const listeners = app.eventListeners.everyItem();
-    if (listeners.length > 0) {
-      listeners.forEach(
-        (listener) => listener.name === listenerName && listener.remove(),
-        console.log('listener removed', listenerName)
-      );
+    const oldListener = app.eventListeners.itemByName(listenerName);
+
+    if (oldListener.isValid) {
+      oldListener.remove();
+      console.log('old listener removed', listenerName);
     }
+
     const listener = app.eventListeners.add(
       'afterContextChanged',
       () => {
@@ -26,8 +26,13 @@ export default function useActiveDocumentVariables(
       false,
       { name: listenerName }
     );
+
     console.log('listener added', listenerName);
-    return () => listener.remove();
+
+    return () => {
+      listener.remove();
+      console.log('listener removed', listenerName);
+    };
   }, [memoizedCallback]);
 
   return { variables, setVariables };
