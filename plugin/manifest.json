@@ -1,7 +1,7 @@
 {
   "id": "RRM.Utils",
   "name": "RRM Utilties",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "index.html",
   "manifestVersion": 5,
   "host": [
@@ -43,9 +43,9 @@
         {
           "width": 23,
           "height": 23,
-          "path": "icons/RRM.png",
-          "scale": [1, 2, 1.5, 1.25],
-          "theme": ["darkest", "dark", "medium", "light", "lightest", "all"]
+          "path": "icons/textVarIcon.png",
+          "scale": [1, 2],
+          "theme": ["darkest", "dark", "light", "lightest", "all"]
         }
       ]
     },
