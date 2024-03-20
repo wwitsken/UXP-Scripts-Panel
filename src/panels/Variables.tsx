@@ -73,7 +73,7 @@ export default function Variables({ getVariables, listenerName }: Props) {
     <div className="panel">
       <div className="scrollable-content">
         <div className="element">
-          <Spectrum.Heading size="L">Update Variables</Spectrum.Heading>
+          <Spectrum.Heading size="L">Manage Custom Variables</Spectrum.Heading>
           <Spectrum.Divider size="medium" />
           <div className="flex-row" style={{ marginTop: '10px' }}>
             <Spectrum.ActionButton onClick={refresh}>
