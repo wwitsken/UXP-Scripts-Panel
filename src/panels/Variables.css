@@ -7,10 +7,51 @@
   justify-content: center;
 }
 
+.scrollable-content {
+  width: 90%;
+  padding: auto;
+}
+
+dialog {
+  width: 100%;
+  height: 100%;
+  min-width: 300px;
+  min-height: 300px;
+  background-color: rgb(53, 53, 53);
+}
+
+.dialog-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.align-baseline {
+  align-items: flex-end;
+}
+
+.text-red {
+  color: red;
+}
+
 .element {
   padding-bottom: 4px;
-  width: 90%;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }
 
 #root {
@@ -26,9 +67,8 @@
   flex-direction: row;
 }
 
-.scrollable-content {
-  width: 90%;
-  padding: auto;
+.flex-row > *:not(:first-child) {
+  margin-left: 4px; /* Adjust the space as needed */
 }
 
 .main-content {
@@ -38,6 +78,7 @@
   align-items: center;
   min-height: 100%;
   margin-top: 14px;
+  justify-content: flex-start;
   padding-bottom: 14px;
 }
 
@@ -49,7 +90,7 @@
 }
 
 .flex-item {
-  width: 100%; /* Adjust the space as needed */
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
