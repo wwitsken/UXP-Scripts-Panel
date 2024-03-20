@@ -15,31 +15,9 @@ interface Props {
 export default function Variables({ getVariables, listenerName }: Props) {
   const { variables, setVariables } = useActiveDocumentVariables(getVariables, listenerName);
 
-  // const getVariables = () => {
-  //   const customVariables = app.activeDocument.textVariables
-  //     .everyItem()
-  //     .properties.filter((variable) => variable.variableOptions?.constructorName === 'CustomTextVariablePreference');
-
-  //   const initialVariables: Variable[] = [];
-
-  //   customVariables.forEach((variable) => {
-  //     initialVariables.push({
-  //       name: variable.name,
-  //       contents: variable.variableOptions.properties.contents,
-  //     });
-  //   });
-  //   return initialVariables;
-  // };
-
   const refresh = () => setVariables(getVariables());
 
-  // useEffect(() => {
-  //   const listener = app.addEventListener('afterContextChanged', () => {
-  //     setVariables(getVariables());
-  //   });
-
-  //   return () => listener.remove();
-  // });
+  // Todo: Add New Variable / Remove Variable Buttons
 
   return (
     <div className="panel">
